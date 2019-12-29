@@ -88,5 +88,6 @@ $$
 
 
 ## 参考
-[1] 原论文[Rendle, Factorization Machines, 2010](https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf)
-[2] 知乎: [推荐系统召回四模型之：全能的FM模型](https://zhuanlan.zhihu.com/p/58160982)
+
+* [1] 原论文[Rendle, Factorization Machines, 2010](https://www.csie.ntu.edu.tw/~b97053/paper/Rendle2010FM.pdf)
+* [2] 知乎: [推荐系统召回四模型之：全能的FM模型](https://zhuanlan.zhihu.com/p/58160982)
