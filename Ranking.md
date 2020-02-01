@@ -30,7 +30,7 @@
 ![dnn_sequence_fm](img/dnn_sequence_fm.png)
 * 演化路线：
     * Wide&Deep为起点：
-        * $ W\&D \rightarrow DeepFM \rightarrow NeuralFFM \rightarrow DeepFFM $
+        * $ W \& D \rightarrow DeepFM \rightarrow NeuralFFM \rightarrow DeepFFM $
         * `如何设计一个新的FM Function结构，来更有效地捕获二阶特征组合`
     * Deep & Cross为起点：
         * $ DeepCross \rightarrow xDeepFM $
@@ -57,14 +57,26 @@
 
 #### DeepFFM（NeuralFFM改进版）
 
+* 将FFM模型改成DNN版本
+* 哈达马积：向量对应位相乘，不加和，得到的还是向量
+* NeuralFFM：deepFM里每个特征对应一个Embedding, FFM直接改成每个特征对应F个Embedding即可
+![neuralFFM](img/neuralFFM.png)
 
+* DeepFFM：在特征交互层加入Attention,因为两两特征组合里有的组合特征比较重要，有的没那么重要
+![deepFFM](img/deepFFM.png)
+
+* DeepFFM交互层的三种Attention方式：
+    * 内积得到的值 + Attention + LayerNorm
+    * 哈达马积得到的向量作为整体 + Attention + LayerNorm（best）
+    * 哈达马积得到的向量值拆开 + Attention + LayerNorm
+* `xDeepFM在基准方法里效果最好，DeepFFM还要更好`
 
 
 ### Deep & Cross为起点
 
 #### Deep & Cross
 
-![deep&cross](img/wide&deep.png)
+![deep&cross](img/deep&cross.png)
 * 显式地做高阶特征组合:设计几层神经网络结构，每一层代表其不同阶的组合，最下面是二阶组合，再套一层，三阶组合，四阶组合，一层一层往上套
 
 #### xDeepFM
